@@ -1,39 +1,35 @@
 # Session Manager
 
 ## Overview
-
-The Session class is a singleton-based session manager for handling user sessions in a PHP application. It provides methods for setting and retrieving session values, managing user authentication status, handling messages between pages, and destroying sessions.
+The `Session` class is a singleton-based session manager for handling user sessions in a PHP application. It provides methods for setting and retrieving session values, managing user authentication status, handling messages between pages, and destroying sessions.
 
 ## Features
-
-Singleton pattern ensures only one instance of the session is created.
-
-Provides methods to set and retrieve session data.
-
-Handles user authentication status.
-
-Supports passing messages between pages.
-
-Allows session destruction for logging out users.
-
+- Singleton pattern ensures only one instance of the session is created.
+- Methods to set and retrieve session data.
+- Manage user authentication status.
+- Pass messages between pages.
+- Destroy sessions for logging out users.
 
 ## Installation
-
-Simply include the Session.php file in your project and use it as needed.
+Include the `Session.php` file in your project and use it as needed.
 
 ## Usage
 
-Getting the Singleton Instance
+### Getting the Singleton Instance
+```php
+use App\Session;
 
-$session = App\Session::getInstance();
+$session = Session::getInstance();
+```
 
-Setting and Retrieving Session Data
-
+### Setting and Retrieving Session Data
+```php
 $session->set('username', 'JohnDoe');
 $username = $session->get('username'); // Returns 'JohnDoe'
+```
 
-Managing User Authentication
-
+### Managing User Authentication
+```php
 $session->setIsLoggedIn(1); // Set user as logged in with user ID 1
 
 if ($session->isLoggedIn()) {
@@ -41,18 +37,19 @@ if ($session->isLoggedIn()) {
 } else {
     echo "User is not logged in.";
 }
+```
 
-Passing Messages Between Pages
-
+### Passing Messages Between Pages
+```php
 $session->setMessage('Account created successfully!');
 $message = $session->getMessage(); // Returns 'Account created successfully!'
 $session->removeMessage(); // Removes the message from the session
+```
 
-Logging Out (Destroying Session)
-
+### Logging Out (Destroying Session)
+```php
 $session->logout(); // Clears session data and destroys the session
+```
 
-License
-
-This project is open-source. Use it freely in your projects.
-
+## License
+This project is open-source and can be used in any way.
